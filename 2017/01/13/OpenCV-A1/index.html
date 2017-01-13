@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="opencv," />
 
 
 
@@ -80,12 +80,37 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Silicon Vision Party">
-<meta property="og:url" content="http://siv.party/index.html">
+<meta name="description" content="##1.加载图像（用cv::imread）
+
+
+imread功能是加载图像文件成为一个Mat对象，其中第一个参数表示图像文件名称
+第二个参数，表示加载的图像是什么类型，支持常见的三个参数值
+IMREAD_UNCHANGED (&amp;lt;0) 表示加载原图，不做任何改变
+IMREAD_GRAYSCALE ( 0)表示把原图作为灰度图像加载进来
+IMREAD_COLOR (&amp;gt;0) 表示把原图作为R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV-简单图像操作（一）">
+<meta property="og:url" content="http://siv.party/2017/01/13/OpenCV-A1/index.html">
 <meta property="og:site_name" content="Silicon Vision Party">
+<meta property="og:description" content="##1.加载图像（用cv::imread）
+
+
+imread功能是加载图像文件成为一个Mat对象，其中第一个参数表示图像文件名称
+第二个参数，表示加载的图像是什么类型，支持常见的三个参数值
+IMREAD_UNCHANGED (&amp;lt;0) 表示加载原图，不做任何改变
+IMREAD_GRAYSCALE ( 0)表示把原图作为灰度图像加载进来
+IMREAD_COLOR (&amp;gt;0) 表示把原图作为R">
+<meta property="og:updated_time" content="2017-01-13T06:09:19.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Silicon Vision Party">
+<meta name="twitter:title" content="OpenCV-简单图像操作（一）">
+<meta name="twitter:description" content="##1.加载图像（用cv::imread）
+
+
+imread功能是加载图像文件成为一个Mat对象，其中第一个参数表示图像文件名称
+第二个参数，表示加载的图像是什么类型，支持常见的三个参数值
+IMREAD_UNCHANGED (&amp;lt;0) 表示加载原图，不做任何改变
+IMREAD_GRAYSCALE ( 0)表示把原图作为灰度图像加载进来
+IMREAD_COLOR (&amp;gt;0) 表示把原图作为R">
 
 
 
@@ -113,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://siv.party/"/>
+  <link rel="canonical" href="http://siv.party/2017/01/13/OpenCV-A1/"/>
 
 
 
 
 
-  <title> Silicon Vision Party </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> OpenCV-简单图像操作（一） | Silicon Vision Party </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,9 +165,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,9 +246,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -258,10 +281,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/01/13/OpenCV-A1/" itemprop="url">
-                  OpenCV-简单图像操作（一）
-                </a>
+                OpenCV-简单图像操作（一）
               
             
           </h1>
@@ -312,53 +332,74 @@
       
 
       
-        
-          
-          ##1.加载图像（用cv::imread）
+        <p>##1.加载图像（用cv::imread）</p>
+<blockquote>
+<ul>
+<li>imread功能是加载图像文件成为一个Mat对象，其中第一个参数表示图像文件名称</li>
+<li>第二个参数，表示加载的图像是什么类型，支持常见的三个参数值</li>
+<li>IMREAD_UNCHANGED (&lt;0) 表示加载原图，不做任何改变</li>
+<li>IMREAD_GRAYSCALE ( 0)表示把原图作为灰度图像加载进来</li>
+<li>IMREAD_COLOR (&gt;0) 表示把原图作为RGB图像加载进来</li>
+</ul>
+</blockquote>
+<p><strong>注意：OpenCV支持JPG、PNG、TIFF等常见格式图像文件加载</strong></p>
+<p>##2.显示图像 (cv::namedWindow 与cv::imshow)</p>
+<blockquote>
+<ul>
+<li>namedWindos功能是创建一个OpenCV窗口，它是由OpenCV自动创建与释放，你无需取销毁它。</li>
+<li>常见用法namedWindow(“Window Title”, WINDOW_AUTOSIZE)</li>
+<li>WINDOW_AUTOSIZE会自动根据图像大小，显示窗口大小，不能人为改变窗口大小</li>
+<li>WINDOW_NORMAL,跟QT集成的时候会使用，允许修改窗口大小。</li>
+<li>imshow根据窗口名称显示图像到指定的窗口上去，第一个参数是窗口名称，第二参数是Mat对象</li>
+</ul>
+</blockquote>
+<p>##3.修改图像 (cv::cvtColor)</p>
+<blockquote>
+<ul>
+<li>cvtColor的功能是把图像从一个彩色空间转换到另外一个色彩空间，有三个参数，第一个参数表示源图像、第二参数表示色彩空间转换之后的图像、第三个参数表示源和目标色彩空间如：COLOR_BGR2HLS、COLOR_BGR2GRAY等</li>
+</ul>
+</blockquote>
 
-
-imread功能是加载图像文件成为一个Mat对象，其中第一个参数表示图像文件名称
-第二个参数，表示加载的图像是什么类型，支持常见的三个参数值
-IMREAD_UNCHANGED (&lt;0) 表示加载原图，不做任何改变
-IMREAD_GRAYSCALE
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/13/OpenCV-A1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/opencv/" rel="tag"># opencv</a>
+          
+        </div>
       
 
       
+
       
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -366,6 +407,10 @@ IMREAD_GRAYSCALE
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -534,28 +579,15 @@ IMREAD_GRAYSCALE
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -582,6 +614,27 @@ IMREAD_GRAYSCALE
 
   
 
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 
