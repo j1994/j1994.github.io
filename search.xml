@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[OpenCV-简单图像操作（二）]]></title>
       <url>%2F2017%2F01%2F13%2FOpenCV-A2%2F</url>
-      <content type="text"><![CDATA[% MathType!MTEF!2!1!+-% feaagGart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn% hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr% 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbl7mZLdGeaGqiVu0Je9sqqr% pepC0xbbL8F4rqqrFfpeea0xe9Lq-Jc9vqaqpepm0xbba9pwe9Q8fs% 0-yqaqpepae9pg0FirpepeKkFr0xfr-xfr-xb9adbaqaaeGaciGaai% aabeqaamaabaabauaakeaadaWdvbqaaiaadcfacaWGKbGaamiEaiab% gUcaRiaadgfacaWGKbGaamyEaaWcbaGaamitaaqab0GaeSyeUhTaey% 4kIipaaaa!4AFA![\oint\limits_L {Pdx + Qdy} ] % MathType!MTEF!2!1!+-% feaagGart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLn% hiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr% 4rNCHbWexLMBbXgBd9gzLbvyNv2CaeHbl7mZLdGeaGqiVu0Je9sqqr% pepC0xbbL8F4rqqrFfpeea0xe9Lq-Jc9vqaqpepm0xbba9pwe9Q8fs% 0-yqaqpepae9pg0FirpepeKkFr0xfr-xfr-xb9adbaqaaeGaciGaai% aabeqaamaabaabauaakeaadaWdvbqaaiaadcfacaWGKbGaamiEaiab% gUcaRiaadgfacaWGKbGaamyEaaWcbaGaamitaaqab0GaeSyeUhTaey% 4kIipaaaa!4AFA![\oint\limits_L {Pdx + Qdy} ] $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;=&amp; \frac{\rho}{\epsilon_0} \\nabla\cdot\vec{B} &amp;=&amp; 0 \\nabla\times\vec{E} &amp;=&amp; -\frac{\partial B}{\partial t} \\nabla\times\vec{B} &amp;=&amp; \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)\end{eqnarray}$$]]></content>
+      <content type="text"><![CDATA[$$\oint\limits_L {Pdx + Qdy} $$ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;=&amp; \frac{\rho}{\epsilon_0} \\nabla\cdot\vec{B} &amp;=&amp; 0 \\nabla\times\vec{E} &amp;=&amp; -\frac{\partial B}{\partial t} \\nabla\times\vec{B} &amp;=&amp; \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)\end{eqnarray}$$]]></content>
     </entry>
 
     
