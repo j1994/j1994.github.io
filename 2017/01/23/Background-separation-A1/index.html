@@ -80,19 +80,22 @@
 
 
 
-<meta name="description" content="$$\oint\limits_L {Pdx + Qdy} $$
-$$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0} \\nabla\cdot\vec{B} &amp;amp;=&amp;amp; 0 \\nabla\times\vec{E} &amp;amp;=&amp;amp; -\frac{\partial B}{\partial">
+<meta name="description" content="为达到前景目标的识别，譬如，交通路口对车辆的识别、监控器对行人的识别，常用的且较为有效的方法就是背景差分法（还有其他的方法，比如光流场法,帧差法），即用一张有要识别目标的图像减去相应的背景图像，那么所得的结果便是我们所要的目标。
+然而，如何获取一个“美好”的背景图，是背景差分法的关键和难点。此处介绍一种最为简单的获取背景的方法——平均背景法。
+顾名思义，其基本思想就是，将所采集到的背景图片叠加求和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV-简单图像操作（二）">
-<meta property="og:url" content="http://siv.party/2017/01/13/OpenCV-A2/index.html">
+<meta property="og:title" content="OpenCV-学习笔记（一）平均背景法">
+<meta property="og:url" content="http://siv.party/2017/01/23/Background-separation-A1/index.html">
 <meta property="og:site_name" content="Silicon Vision Party">
-<meta property="og:description" content="$$\oint\limits_L {Pdx + Qdy} $$
-$$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0} \\nabla\cdot\vec{B} &amp;amp;=&amp;amp; 0 \\nabla\times\vec{E} &amp;amp;=&amp;amp; -\frac{\partial B}{\partial">
-<meta property="og:updated_time" content="2017-01-15T08:44:06.131Z">
+<meta property="og:description" content="为达到前景目标的识别，譬如，交通路口对车辆的识别、监控器对行人的识别，常用的且较为有效的方法就是背景差分法（还有其他的方法，比如光流场法,帧差法），即用一张有要识别目标的图像减去相应的背景图像，那么所得的结果便是我们所要的目标。
+然而，如何获取一个“美好”的背景图，是背景差分法的关键和难点。此处介绍一种最为简单的获取背景的方法——平均背景法。
+顾名思义，其基本思想就是，将所采集到的背景图片叠加求和">
+<meta property="og:updated_time" content="2017-01-23T07:26:16.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV-简单图像操作（二）">
-<meta name="twitter:description" content="$$\oint\limits_L {Pdx + Qdy} $$
-$$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0} \\nabla\cdot\vec{B} &amp;amp;=&amp;amp; 0 \\nabla\times\vec{E} &amp;amp;=&amp;amp; -\frac{\partial B}{\partial">
+<meta name="twitter:title" content="OpenCV-学习笔记（一）平均背景法">
+<meta name="twitter:description" content="为达到前景目标的识别，譬如，交通路口对车辆的识别、监控器对行人的识别，常用的且较为有效的方法就是背景差分法（还有其他的方法，比如光流场法,帧差法），即用一张有要识别目标的图像减去相应的背景图像，那么所得的结果便是我们所要的目标。
+然而，如何获取一个“美好”的背景图，是背景差分法的关键和难点。此处介绍一种最为简单的获取背景的方法——平均背景法。
+顾名思义，其基本思想就是，将所采集到的背景图片叠加求和">
 
 
 
@@ -120,13 +123,13 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
 
 
 
-  <link rel="canonical" href="http://siv.party/2017/01/13/OpenCV-A2/"/>
+  <link rel="canonical" href="http://siv.party/2017/01/23/Background-separation-A1/"/>
 
 
 
 
 
-  <title> OpenCV-简单图像操作（二） | Silicon Vision Party </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> OpenCV-学习笔记（一）平均背景法 | Silicon Vision Party </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +265,7 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://siv.party/2017/01/13/OpenCV-A2/">
+  <link itemprop="mainEntityOfPage" href="http://siv.party/2017/01/23/Background-separation-A1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="南柯">
@@ -286,7 +289,7 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
             
             
               
-                OpenCV-简单图像操作（二）
+                OpenCV-学习笔记（一）平均背景法
               
             
           </h1>
@@ -301,8 +304,8 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T14:23:43+08:00">
-                2017-01-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T15:23:30+08:00">
+                2017-01-23
               </time>
             
 
@@ -320,8 +323,8 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/13/OpenCV-A2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/13/OpenCV-A2/" itemprop="commentCount"></span>
+                <a href="/2017/01/23/Background-separation-A1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/Background-separation-A1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -331,7 +334,7 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
 
           
           
-             <span id="/2017/01/13/OpenCV-A2/" class="leancloud_visitors" data-flag-title="OpenCV-简单图像操作（二）">
+             <span id="/2017/01/23/Background-separation-A1/" class="leancloud_visitors" data-flag-title="OpenCV-学习笔记（一）平均背景法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -358,8 +361,13 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
       
 
       
-        <p>$$\oint\limits_L {Pdx + Qdy} $$</p>
-<p>$$<br>\begin{eqnarray}<br>\nabla\cdot\vec{E} &amp;=&amp; \frac{\rho}{\epsilon_0} \<br>\nabla\cdot\vec{B} &amp;=&amp; 0 \<br>\nabla\times\vec{E} &amp;=&amp; -\frac{\partial B}{\partial t} \<br>\nabla\times\vec{B} &amp;=&amp; \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)<br>\end{eqnarray}<br>$$</p>
+        <p>为达到前景目标的识别，譬如，交通路口对车辆的识别、监控器对行人的识别，常用的且较为有效的方法就是背景差分法（还有其他的方法，比如光流场法,帧差法），即用一张有要识别目标的图像减去相应的背景图像，那么所得的结果便是我们所要的目标。</p>
+<p>然而，如何获取一个“美好”的背景图，是背景差分法的关键和难点。此处介绍一种最为简单的获取背景的方法——平均背景法。</p>
+<p>顾名思义，其基本思想就是，将所采集到的背景图片叠加求和，而后求取平均值作为要求的背景。其大致算法流程如下：</p>
+<p>1.将采集到的部分图片，利用OpenCV的cvAcc函数累加求和，并统计累加次数，累加完成后在用cvConvertScale函数求取平均值，记为A。（注意理解该平均值的意思是在（x,y）位置处，所有参与求和计算的图像在该点出的像素平均值，每一点的像素平均值是不同的）</p>
+<p>2.前一帧图像和当前参与累加的图像求差的绝对值，利用cvAbsDiff函数，而后该绝对值图像也进行累加求平均值，记为D。（同理这是某点的差值平均值）它描述的是某点像素值得波动幅度。</p>
+<p>3.那么有1和2便可以认为，图像某点的像素值P若满足A-D &lt; P &lt; A+D，则认为此点属于背景，然而由于前景目标的加入，可能对背景点的亮度有一定的影响，故对波动幅度D进行一定的放缩，若 A -KD &lt; p &lt; A + KD，便认为该点为背景点。自然在该范围外的点，便是我们需要的前景点。那么用cvThreshold函数完成二值化。我们的目的就达到了。</p>
+<p>此为背景建模最简单的方法，在室内等干扰较少的环境下使用时，效果较好，一旦有些许干扰则效果严重下降。一种非常有效，不管是运行速度还是处理效果都非常好的算法是CodeBook算法，下篇博客中将会介绍。</p>
 
       
     </div>
@@ -441,8 +449,8 @@ $$\begin{eqnarray}\nabla\cdot\vec{E} &amp;amp;=&amp;amp; \frac{\rho}{\epsilon_0}
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/13/OpenCV-A2/"
-           data-title="OpenCV-简单图像操作（二）" data-url="http://siv.party/2017/01/13/OpenCV-A2/">
+      <div class="ds-thread" data-thread-key="2017/01/23/Background-separation-A1/"
+           data-title="OpenCV-学习笔记（一）平均背景法" data-url="http://siv.party/2017/01/23/Background-separation-A1/">
       </div>
     
   </div>
